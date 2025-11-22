@@ -16,7 +16,15 @@ function getHumanChoice() {
   return humanChoice;
 }
 
-
+function announceWinner(humanScore, computerScore) {
+  if (humanScore > computerScore) {
+    return console.log(`You win ${humanScore} - ${computerScore}`);
+  } else if (computerScore > humanScore) {
+    return console.log(`You lose ${computerScore} - ${humanScore}`);
+  } else {
+    return console.log(`It was a tie, ${humanScore} - ${computerScore}`);
+  }
+}
 
 function playGame() {
   let humanScore = 0;
@@ -38,6 +46,13 @@ function playGame() {
       return console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
     }
   }
+
+  playRound();
+  playRound();
+  playRound();
+  playRound();
+  playRound();
+  announceWinner(humanScore, computerScore);
 }
 
-playRound();
+playGame();
