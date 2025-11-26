@@ -26,31 +26,27 @@ function announceWinner(humanScore, computerScore) {
   }
 }
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
-  function playRound() {
-    let humanChoice = getHumanChoice().toLowerCase();
-    let computerChoice = getComputerChoice();
+function playRound() {
+  let humanChoice = getHumanChoice().toLowerCase();
+  let computerChoice = getComputerChoice();
 
-    if (humanChoice === computerChoice) {
-      return console.log("Tie");
-    } else if ((humanChoice === "scissors" && computerChoice === "paper") ||
-              (humanChoice === "paper" && computerChoice === "rock") ||
-              (humanChoice === "rock" && computerChoice === "scissors")) {
-      humanScore += 1;
-      return console.log(`You win, ${humanChoice} beats ${computerChoice}`);
-    } else {
-      computerScore +=1;
-      return console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
-    }
+  if (humanChoice === computerChoice) {
+    return console.log("Tie");
+  } else if ((humanChoice === "scissors" && computerChoice === "paper") ||
+            (humanChoice === "paper" && computerChoice === "rock") ||
+            (humanChoice === "rock" && computerChoice === "scissors")) {
+    humanScore += 1;
+    return console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+  } else {
+    computerScore +=1;
+    return console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
   }
+}
 
-  playRound();
-  playRound();
-  playRound();
-  playRound();
+function playGame() {
   playRound();
   announceWinner(humanScore, computerScore);
 }
