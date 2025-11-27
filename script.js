@@ -11,11 +11,6 @@ function getComputerChoice() {
   }  
 }
 
-function getHumanChoice() {
-  let humanChoice = prompt("Rock, paper, scissors?", '');
-  return humanChoice;
-}
-
 function announceWinner(humanScore, computerScore) {
   if (humanScore > computerScore) {
     return console.log(`You win ${humanScore} - ${computerScore}`);
@@ -28,21 +23,22 @@ function announceWinner(humanScore, computerScore) {
 
 let humanScore = 0;
 let computerScore = 0;
+let roundResultDiv = document.querySelector(".round-result");
 
 function playRound() {
-  let humanChoice = getHumanChoice().toLowerCase();
+  let humanChoice = this.textContent.toLowerCase();
   let computerChoice = getComputerChoice();
 
   if (humanChoice === computerChoice) {
-    return console.log("Tie");
+    roundResultDiv.textContent = "Tie";
   } else if ((humanChoice === "scissors" && computerChoice === "paper") ||
             (humanChoice === "paper" && computerChoice === "rock") ||
             (humanChoice === "rock" && computerChoice === "scissors")) {
     humanScore += 1;
-    return console.log(`You win, ${humanChoice} beats ${computerChoice}`);
+    roundResultDiv.textContent = `You win, ${humanChoice} beats ${computerChoice}`;
   } else {
     computerScore +=1;
-    return console.log(`You lose, ${computerChoice} beats ${humanChoice}`);
+    roundResultDiv.textContent = `You lose, ${computerChoice} beats ${humanChoice}`;
   }
 }
 
@@ -51,4 +47,5 @@ function playGame() {
   announceWinner(humanScore, computerScore);
 }
 
-playGame();
+const buttons = document.querySelectorAll("button");
+buttons.forEach(button => button.addEventListener("click", playRound));
