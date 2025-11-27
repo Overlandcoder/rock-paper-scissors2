@@ -24,6 +24,8 @@ function announceWinner(humanScore, computerScore) {
 let humanScore = 0;
 let computerScore = 0;
 let roundResultDiv = document.querySelector(".round-result");
+let scoreDiv = document.querySelector(".score");
+let winnerDiv = document.querySelector(".winner");
 
 function playRound() {
   let humanChoice = this.textContent.toLowerCase();
@@ -39,6 +41,12 @@ function playRound() {
   } else {
     computerScore +=1;
     roundResultDiv.textContent = `You lose, ${computerChoice} beats ${humanChoice}`;
+  }
+  scoreDiv.textContent = `Score: Human ${humanScore} - ${computerScore} Computer`;
+  if (humanScore === 5) {
+    winnerDiv.textContent = "You win";
+  } else if (computerScore === 5) {
+    winnerDiv.textContent = "You lose, computer wins";
   }
 }
 
